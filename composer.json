@@ -1,0 +1,34 @@
+{
+  "name": "sadi01/yii2-giigenerator",
+  "description": "Custom gii generators for Yii2 framework",
+  "type": "yii2-extension",
+  "keywords": [
+    "yii2",
+    "extension",
+    "gii",
+    "generator"
+  ],
+  "license": "BSD-3-Clause",
+  "authors": [
+    {
+      "name": "Sadegh Shafii",
+      "email": "sadshafiei.01@gmail.com"
+    },
+    {
+      "name": "Amin Shafii",
+      "email": "amin.shafiee.d@gmail.com"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/sadi01/yii2-giigenerator/issues",
+    "source": "https://github.com/sadi01/yii2-giigenerator"
+  },
+  "require": {
+    "yiisoft/yii2": "~2.0.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "sadi01\\giigenerator\\": "src/"
+    }
+  }
+}
