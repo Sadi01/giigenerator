@@ -53,6 +53,15 @@ class Generator extends \yii\gii\Generator
     public $useSchemaName = true;
     public $generateQuery = false;
     public $queryNs = 'app\models';
+    public $generateTimestampBehavior = true;
+    public $generateBlameableBehavior = true;
+    public $generateSoftDeleteBehavior = true;
+    public $generateJsonableBehavior = false;
+    public $generateCdnUploadImageBehavior = false;
+    public $generateScenarios = false;
+    public $generateItemAlias = true;
+    public $generateFields = true;
+    public $generateExtraFields = true;
     /**
      * @var string
      */
@@ -124,7 +133,12 @@ class Generator extends \yii\gii\Generator
             [['generateRelations'], 'in', 'range' => [self::RELATIONS_NONE, self::RELATIONS_ALL, self::RELATIONS_ALL_INVERSE]],
             [['generateJunctionRelationMode'], 'in', 'range' => [self::JUNCTION_RELATION_VIA_TABLE, self::JUNCTION_RELATION_VIA_MODEL]],
             [
-                ['generateLabelsFromComments', 'useTablePrefix', 'useSchemaName', 'generateQuery', 'generateRelationsFromCurrentSchema', 'useClassConstant', 'enableI18N', 'standardizeCapitals', 'singularize'],
+                [
+                    'generateLabelsFromComments', 'useTablePrefix', 'useSchemaName', 'generateQuery', 'generateRelationsFromCurrentSchema',
+                    'useClassConstant', 'enableI18N', 'standardizeCapitals', 'singularize', 'generateTimestampBehavior', 'generateBlameableBehavior',
+                    'generateItemAlias', 'generateSoftDeleteBehavior', 'generateCdnUploadImageBehavior', 'generateJsonableBehavior', 'generateFields',
+                    'generateExtraFields', 'generateScenarios'
+                ],
                 'boolean'
             ],
             [['messageCategory'], 'validateMessageCategory', 'skipOnEmpty' => false],
@@ -154,6 +168,15 @@ class Generator extends \yii\gii\Generator
             'queryClass' => 'ActiveQuery Class',
             'queryBaseClass' => 'ActiveQuery Base Class',
             'useSchemaName' => 'Use Schema Name',
+            'generateTimestampBehavior' => 'Generate Timestamp Behavior',
+            'generateBlameableBehavior' => 'Generate Blameable Behavior',
+            'generateJsonableBehavior' => 'Generate Jsonable Behavior',
+            'generateCdnUploadImageBehavior' => 'Generate CDN Upload Image Behavior',
+            'generateSoftDeleteBehavior' => 'Generate Soft Delete Behavior',
+            'generateScenarios' => 'Generate Scenarios Method',
+            'generateItemAlias' => 'Generate Item Alias Method',
+            'generateFields' => 'Generate Fields Method',
+            'generateExtraFields' => 'Generate Extra Fields Method',
         ]);
     }
 
@@ -884,9 +907,9 @@ class Generator extends \yii\gii\Generator
                 $baseClassWrapper =
                     'namespace ' . __NAMESPACE__ . ';'.
                     'class GiiBaseClassWrapper extends \\' . $baseClass . ' {' .
-                        'public static function tableName(){' .
-                            'return "' . addslashes($table->fullName) . '";' .
-                        '}' .
+                    'public static function tableName(){' .
+                    'return "' . addslashes($table->fullName) . '";' .
+                    '}' .
                     '};' .
                     'return new GiiBaseClassWrapper();';
                 $baseModel = eval($baseClassWrapper);

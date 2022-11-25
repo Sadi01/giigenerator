@@ -27,32 +27,34 @@ echo "<?php\n";
 namespace <?= $generator->queryNs ?>;
 
 /**
- * This is the ActiveQuery class for [[<?= $modelFullClassName ?>]].
- *
- * @see <?= $modelFullClassName . "\n" ?>
- */
+* This is the ActiveQuery class for [[<?= $modelFullClassName ?>]].
+*
+* @see <?= $modelFullClassName . "\n" ?>
+*/
 class <?= $className ?> extends <?= '\\' . ltrim($generator->queryBaseClass, '\\') . "\n" ?>
 {
-    /*public function active()
+<?php if($generator->generateItemAlias): ?>
+    public function active()
     {
-        return $this->andWhere('[[status]]=1');
-    }*/
-
-    /**
-     * {@inheritdoc}
-     * @return <?= $modelFullClassName ?>[]|array
-     */
-    public function all($db = null)
-    {
-        return parent::all($db);
+    return $this->onCondition('<>', <?php echo $modelFullClassName ?>::tableName() . '.status', <?php echo $modelFullClassName ?>::STATUS_DELETE);
     }
+<?php endif; ?>
 
-    /**
-     * {@inheritdoc}
-     * @return <?= $modelFullClassName ?>|array|null
-     */
-    public function one($db = null)
-    {
-        return parent::one($db);
-    }
+/**
+* {@inheritdoc}
+* @return <?= $modelFullClassName ?>[]|array
+*/
+public function all($db = null)
+{
+return parent::all($db);
+}
+
+/**
+* {@inheritdoc}
+* @return <?= $modelFullClassName ?>|array|null
+*/
+public function one($db = null)
+{
+return parent::one($db);
+}
 }
