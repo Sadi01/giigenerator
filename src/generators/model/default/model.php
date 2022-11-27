@@ -50,20 +50,21 @@ use Yii;
         * @property <?= $relation[1] . ($relation[2] ? '[]' : '') . ' $' . lcfirst($name) . "\n" ?>
     <?php endforeach; ?>
 <?php endif; ?>
+    *
 <?php if($generator->generateTimestampBehavior): ?>
-    * @mixin TimestampBehavior
+        * @mixin TimestampBehavior
 <?php endif; ?>
 <?php if($generator->generateBlameableBehavior): ?>
-    * @mixin BlameableBehavior;
+        * @mixin BlameableBehavior;
 <?php endif; ?>
 <?php if($generator->generateSoftDeleteBehavior): ?>
-    * @mixin SoftDeleteBehavior;
+        * @mixin SoftDeleteBehavior;
 <?php endif; ?>
 <?php if($generator->generateJsonableBehavior): ?>
-    * @mixin Jsonable;
+        * @mixin Jsonable;
 <?php endif; ?>
 <?php if($generator->generateCdnUploadImageBehavior): ?>
-    * @mixin CdnUploadImageBehavior;
+        * @mixin CdnUploadImageBehavior;
 <?php endif; ?>
 */
 class <?= $className ?> extends <?= '\\' . ltrim($generator->baseClass, '\\') . "\n" ?>
