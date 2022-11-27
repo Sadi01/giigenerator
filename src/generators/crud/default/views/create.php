@@ -22,12 +22,11 @@ $this->title = <?= $generator->generateString('Create ' . Inflector::camel2words
 $this->params['breadcrumbs'][] = ['label' => <?= $generator->generateString(Inflector::pluralize(Inflector::camel2words(StringHelper::basename($generator->modelClass)))) ?>, 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="<?= Inflector::camel2id(StringHelper::basename($generator->modelClass)) ?>-create">
-
-    <h1><?= "<?= " ?>Html::encode($this->title) ?></h1>
-
-    <?= "<?= " ?>$this->render('_form', [
+<div class="<?= Inflector::camel2id(StringHelper::basename($generator->modelClass)) ?>-create card">
+    <div class="card-header"><h3><?= "<?= " ?>Html::encode($this->title) ?></h3></div>
+    <div class="card-body">
+        <?= "<?= " ?>$this->render('_form', [
         'model' => $model,
-    ]) ?>
-
+        ]) ?>
+    </div>
 </div>
