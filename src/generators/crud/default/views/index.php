@@ -19,7 +19,8 @@ use yii\helpers\Url;
 use yii\grid\ActionColumn;
 use yii\web\View;
 use yii\data\ActiveDataProvider;
-<?= !empty($generator->searchModelClass) ? ltrim($generator->searchModelClass, '\\') : '' ?>
+<?= !empty($generator->searchModelClass) ? 'use ' . ltrim($generator->searchModelClass, '\\') . ';' : '' ?>
+
 use <?= $generator->indexWidgetType === 'grid' ? "yii\\grid\\GridView" : "yii\\widgets\\ListView" ?>;
 <?= $generator->enablePjax ? 'use yii\widgets\Pjax;' : '' ?>
 
