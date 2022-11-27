@@ -36,7 +36,7 @@ class <?= $className ?> extends <?= '\\' . ltrim($generator->queryBaseClass, '\\
 <?php if($generator->generateItemAlias): ?>
     public function active()
     {
-    return $this->onCondition('<>', <?php echo $modelFullClassName ?>::tableName() . '.status', <?php echo $modelFullClassName ?>::STATUS_DELETE);
+    return $this->onCondition(['<>', <?php echo $modelFullClassName ?>::tableName() . '.status', <?php echo $modelFullClassName ?>::STATUS_DELETED]);
     }
 <?php endif; ?>
 

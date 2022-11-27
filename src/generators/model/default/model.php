@@ -172,7 +172,7 @@ return [
 ) { ?>
     public function behaviors()
     {
-    return array_merge(parent::behaviors, [
+    return array_merge(parent::behaviors(), [
     <?php if($generator->generateTimestampBehavior): ?>
         'TimestampBehavior' => [
         'class' => TimestampBehavior::class,
@@ -236,7 +236,10 @@ return [
 <?php } ?>
 
 <?php if($generator->generateFields): ?>
-    public function fields()
+    /**
+    * @return string[]
+    */
+    public function fields(): array
     {
     $fields = [
     'id',
@@ -247,7 +250,10 @@ return [
 <?php endif; ?>
 
 <?php if($generator->generateExtraFields): ?>
-    public function extraFields()
+    /**
+    * @return string[]
+    */
+    public function extraFields(): array
     {
     $extraFields = [
 
