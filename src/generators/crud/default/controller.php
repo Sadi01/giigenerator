@@ -39,6 +39,9 @@ use yii\data\ActiveDataProvider;
 use <?= ltrim($generator->baseControllerClass, '\\') ?>;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+<?php if($generator->checkAccessControl): ?>
+use yii\filters\AccessControl;
+<?php endif; ?>
 
 /**
  * <?= $controllerClass ?> implements the CRUD actions for <?= $modelClass ?> model.
@@ -53,6 +56,22 @@ class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->bas
         return array_merge(
             parent::behaviors(),
             [
+<?php if($generator->checkAccessControl): ?>
+                'access' => [
+                    'class' => AccessControl::class,
+                    'rules' => [
+                        [
+                            'actions' => [
+                                'index', 'view', 'create', 'update', 'delete'
+                            ],
+                            'roles' => [
+                                '@'
+                            ],
+                            'allow' => true,
+                        ],
+                    ]
+                ],
+<?php endif; ?>
                 'verbs' => [
                     'class' => VerbFilter::class,
                     'actions' => [

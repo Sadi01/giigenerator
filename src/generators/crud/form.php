@@ -2,6 +2,7 @@
 use sadi01\giigenerator\generators\crud\Generator;
 use yii\bootstrap4\ActiveForm;
 use yii\web\View;
+use yii\helpers\Html;
 
 /** @var View $this */
 /** @var ActiveForm $form */
@@ -19,3 +20,5 @@ echo $form->field($generator, 'indexWidgetType')->dropDownList([
 echo $form->field($generator, 'enableI18N')->checkbox();
 echo $form->field($generator, 'enablePjax')->checkbox();
 echo $form->field($generator, 'messageCategory');
+echo Html::tag('hr');
+echo $form->field($generator, 'checkAccessControl')->checkbox();

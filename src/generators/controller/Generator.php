@@ -38,6 +38,7 @@ class Generator extends \yii\gii\Generator
      */
     public $actions = 'index';
 
+    public $checkAccessControl = true;
 
     /**
      * {@inheritdoc}
@@ -69,6 +70,7 @@ class Generator extends \yii\gii\Generator
             ['baseClass', 'match', 'pattern' => '/^[\w\\\\]*$/', 'message' => 'Only word characters and backslashes are allowed.'],
             ['actions', 'match', 'pattern' => '/^[a-z][a-z0-9\\-,\\s]*$/', 'message' => 'Only a-z, 0-9, dashes (-), spaces and commas are allowed.'],
             ['viewPath', 'safe'],
+            [['checkAccessControl'], 'boolean'],
         ]);
     }
 
@@ -82,6 +84,7 @@ class Generator extends \yii\gii\Generator
             'controllerClass' => 'Controller Class',
             'viewPath' => 'View Path',
             'actions' => 'Action IDs',
+            'checkAccessControl' => 'Check Access Control',
         ];
     }
 

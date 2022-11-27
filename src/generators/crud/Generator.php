@@ -60,6 +60,8 @@ class Generator extends \yii\gii\Generator
      */
     public $strictInflector = true;
 
+    public $checkAccessControl = true;
+
 
     /**
      * {@inheritdoc}
@@ -95,7 +97,7 @@ class Generator extends \yii\gii\Generator
             [['controllerClass', 'searchModelClass'], 'validateNewClass'],
             ['indexWidgetType', 'in', 'range' => ['grid', 'list']],
             ['modelClass', 'validateModelClass'],
-            [['enableI18N', 'enablePjax'], 'boolean'],
+            [['enableI18N', 'enablePjax', 'checkAccessControl'], 'boolean'],
             ['messageCategory', 'validateMessageCategory', 'skipOnEmpty' => false],
             ['viewPath', 'safe'],
         ]);
@@ -114,6 +116,7 @@ class Generator extends \yii\gii\Generator
             'indexWidgetType' => 'Widget Used in Index Page',
             'searchModelClass' => 'Search Model Class',
             'enablePjax' => 'Enable Pjax',
+            'checkAccessControl' => 'Check Access Control',
         ]);
     }
 

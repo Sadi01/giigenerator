@@ -11,3 +11,5 @@ echo $form->field($generator, 'controllerClass');
 echo $form->field($generator, 'actions');
 echo $form->field($generator, 'viewPath');
 echo $form->field($generator, 'baseClass');
+echo Html::tag('hr');
+echo $form->field($generator, 'checkAccessControl')->checkbox();
